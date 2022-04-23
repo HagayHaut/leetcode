@@ -58,3 +58,16 @@ function sumDigits(num) {
     // return sum of numbers in array
     return digitArr.reduce((pre,cur) => pre+cur);
 }
+
+// Return sum AND product of array of numbers
+// sumAndProduct([1,2,3,4]);
+// >> { sum: 10, product: 24 }
+function sumAndProduct(arr) {
+  return {
+    // important here to use the second arg for reduce
+    // initial value for sum is 0, 1 for product
+    sum: arr.reduce((a,b) => a + b, 0),
+    product: arr.reduce((a,b) => a * b, 1)
+  }
+}
+

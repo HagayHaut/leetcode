@@ -21,3 +21,20 @@ function binaryTranslator(str) {
     // convert to string and return
       return binaryArr.map((elem) => String.fromCharCode(parseInt(elem,2))).join('');
 }
+
+// Convert string to opposite case
+// toOppositeCase('Hello, Stranger!')
+// >> 'hELLO, sTRANGER!'
+function toOppositeCase(str) {
+  // const charRegex = /[a-z]/i
+  const arr = str.split('');
+  return arr.map(char => {
+    if(char === char.toUpperCase()) {
+      return char.toLowerCase();
+    } else { 
+      return char.toUpperCase(); 
+    } 
+  })
+  .join('')
+}
+

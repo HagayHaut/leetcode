@@ -12,3 +12,84 @@ function rotateRight(arr) {
     missingLast.unshift(last);
     return missingLast;
 }
+
+// check if input is an array
+function checkIfArray(input) {
+    return Array.isArray(input);
+}
+
+// nondestructively clone array
+function nondestructiveArrayClone(arr) {
+  return [...arr]
+}
+
+// get first n item of array 
+// defaults to first item
+function getFirstNOfArray(arr, n = 1) {
+    return arr.slice(0, n);
+}
+
+// join all elements of array into one string
+// each element should be separated by a space
+function arrayToSting(arr) {
+    return arr.join(' ')
+}
+
+// Find the most common item in an array
+// mostCommonInArray([2,1,3,1,1,6,6,2,4,2,4,1,8,1])
+//>> '1: 5 times'
+function mostCommonInArray(arr) {
+    // store count of items in object (key is item, value is count)
+    // to do this: if item key exists, increment value
+    // else create key and initialize at 1
+    let counts = {};
+    for(item of arr) {
+        if(counts[item]) counts[item]++;
+        else {
+            counts[item] = 1;
+        }
+    }
+    // store object entries in array and sort by decreasing value (index 1 of each entry)
+    // first entry is [most common item, item count]
+    const entries = Object.entries(counts)
+    const mostCommon = entries.sort((a, b) => b[1] - a[1] )[0]
+    return `${mostCommon[0]}: ${mostCommon[1]} times`
+}
+
+// Print nested arrays as rows
+// nestedArrayRows([[1,2,3],[4,5,6],[7,8,9]])
+// >> 'row 0'
+// >> '1'
+// >> '2'
+// >> '3'
+// >> 'row 1'
+// >> '4'
+// >> '5'
+// >> '6'
+// >> ...
+function nesterArrayRows(arr) {
+    // loop through top level arrs, looping through nested items of each
+    // print 'row i' when j is 0 (i is row number, j=0 means first item of nested arr)
+    // important to print 'row i' before printing arr[i][j]
+    for (let i = 0; i < arr.length; i++) {
+        for(let j = 0; j < arr[i].length; j++) {
+            if(j === 0) console.log(`row ${i}`);
+            console.log(arr[i][j].toString());
+        }
+    }
+}
+
+// Return a random element from an array
+function randomFromArray(arr) {
+    // 1. Math.random() returns random num between 0-1
+    // 2. multiply that by max-min (includes all possible nums, except min)
+    // 3. so add min
+    // 4. get floor of result (need integer)
+    function randomFromRange(min,max) {
+        return Math.floor(Math.random() * (max - min) + min)
+    }
+    // call our function to get random integer between 0 and index after last
+    // can't do arr.length-1 because using Math.floor(always rounds down)
+    return arr[randomFromRange(0,arr.length)]
+}
+
