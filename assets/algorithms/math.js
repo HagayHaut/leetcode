@@ -2,7 +2,7 @@
 
 // Prime Number Checker
 function isPrime(num) {
-    if(num==1) return false; 
+    if(num<=1) return false; 
     else {
         // square root is always the max div (bigger divs need smaller divs)
       const maxDiv = Math.sqrt(num);
