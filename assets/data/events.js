@@ -14,7 +14,7 @@ title.onclick = (e) => toggleButton(e);
 
 function toggleButton(e) {
     if(e.target.textContent == 'Local IDE REPLit') {
-        e.target.textContent = 'Didn\'t Do Much';
+        e.target.textContent = 'Still A REPLit..';
     } else {
         e.target.textContent = 'Local IDE REPLit';
     }
