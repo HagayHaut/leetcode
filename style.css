@@ -19,7 +19,7 @@ header {
 #content {
     position: absolute;
     top: 150px;
-    color: #AB3428;
+    color: #801e15;
     font-family: 'Courier New', Courier, monospace;
     width: 100%;
     height: 100%;
@@ -27,13 +27,15 @@ header {
 }
 
 span {
+    color: #F5EE9E;
     font-size: small;
     padding: 3px 10px 8px 3px;
-    border: 2px solid #AB3428;
+    border: 2px solid #F5EE9E;
     border-radius: 4px;
 }
 
 #j {
+    color: #F5EE9E;
     padding: 3px 15px 8px 3px !important;
 }
 
