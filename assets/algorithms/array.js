@@ -1,40 +1,5 @@
 // ARRAY ALGORITHMS WORTH SAVING
 
-// Rotate array left one position
-function rotateLeft(arr) {
-    return arr.slice(1).concat(arr[0]);
-}
-
-// rotate string right one position
-function rotateRight(arr) {
-    let last = arr[arr.length-1];
-    let missingLast = arr.slice(0,-1);
-    missingLast.unshift(last);
-    return missingLast;
-}
-
-// check if input is an array
-function checkIfArray(input) {
-    return Array.isArray(input);
-}
-
-// nondestructively clone array
-function nondestructiveArrayClone(arr) {
-  return [...arr]
-}
-
-// get first n item of array 
-// defaults to first item
-function getFirstNOfArray(arr, n = 1) {
-    return arr.slice(0, n);
-}
-
-// join all elements of array into one string
-// each element should be separated by a space
-function arrayToSting(arr) {
-    return arr.join(' ')
-}
-
 // Find the most common item in an array
 // mostCommonInArray([2,1,3,1,1,6,6,2,4,2,4,1,8,1])
 //>> '1: 5 times'
@@ -55,6 +20,17 @@ function mostCommonInArray(arr) {
     const mostCommon = entries.sort((a, b) => b[1] - a[1] )[0]
     return `${mostCommon[0]}: ${mostCommon[1]} times`
 }
+
+// Returns new array with repeats removed
+// removeRepeats([1,1,2,3,3,4,5,6,7,7])
+// >> [1,2,3,4,5,6,7]
+function removeRepeats(arr) {
+    // sets require unique elements, so they remove repeats
+    // array >> set >> array
+    return Array.from(new Set(arr))
+}
+
+
 
 // Print nested arrays as rows
 // nestedArrayRows([[1,2,3],[4,5,6],[7,8,9]])
@@ -79,6 +55,29 @@ function nesterArrayRows(arr) {
     }
 }
 
+// Function that moves element to specified index
+// moveArrayElement([1,2,3,4],3,0) >> (arr,element,index)
+// >> [3,1,2,4]
+function moveArrayElement(arr,element,index) {
+    // find current index of element and use it to remove element
+    const preIndex = arr.indexOf(element);
+    arr.splice(preIndex,1);
+    // insert element in arr at given index 
+    arr.splice(index,0,element);
+    return arr;
+}
+
+// Filter blank/falsey values from array
+// filterBlank([1,0,2,null,3,'']);
+// >> [1,2,3]
+function filterBlank(arr) {
+    // only returns values that evaluate to true
+    // if just value expression, blank will be falsey
+    return arr.filter( value => value )
+}
+
+
+
 // Return a random element from an array
 function randomFromArray(arr) {
     // 1. Math.random() returns random num between 0-1
@@ -91,5 +90,92 @@ function randomFromArray(arr) {
     // call our function to get random integer between 0 and index after last
     // can't do arr.length-1 because using Math.floor(always rounds down)
     return arr[randomFromRange(0,arr.length)]
+}
+
+// Return nth largest item from an array
+// nthLargestFromArray([2,4,3,5,6,7,1],3)
+// >> 5
+function nthLargestFromArray(arr,n) {
+    return arr.sort((a,b) => a - b)[arr.length-n];
+}
+
+// Write a function that takes a number (n) and a value
+// return an array containing n times of that value
+// nValuesArray('potato',3);
+// >> [ 'potato', 'potato', 'potato' ]
+function nTimesValue(value,n) {
+    const result = [];
+    for(let i = 0; i < n; i++) {
+        result.push(value)
+    }
+    return result;
+}
+
+// Returns array with unique elements from two arrays
+// uniqueToOneArray([1,2,3,4],[2,3,4,5,6,7])
+// >> [1,5,6,7]
+function uniqueToOneArray(arr1,arr2) {
+    const uniques = [];
+    // if an item isn't in the other array, it's unique
+    arr1.forEach(item => {
+        if(!arr2.includes(item)) uniques.push(item)
+    });
+    arr2.forEach(item => {
+        if(!arr1.includes(item)) uniques.push(item)
+    });
+    return uniques;
+}
+
+
+// Create array with range including inputs
+function arrayRange(min,max) {
+    const range = [];
+    for(let i = min; i <= max; i++) {
+        range.push(i)
+    }
+    return range;
+}
+// Create array range not including inputs
+function arrayRangeBetween(min,max) {
+    const range = [];
+    for(let i = min + 1; i < max; i++) {
+        range.push(i);
+    }
+    return range;
+}
+
+// Rotate array left one position
+function rotateLeft(arr) {
+    return arr.slice(1).concat(arr[0]);
+}
+
+// rotate string right one position
+function rotateRight(arr) {
+    let last = arr[arr.length-1];
+    let missingLast = arr.slice(0,-1);
+    missingLast.unshift(last);
+    return missingLast;
+}
+
+// check if input is an array
+function isArray(input) {
+    return Array.isArray(input);
+}
+
+// nondestructively clone array
+function nondestructiveArrayClone(arr) {
+  return [...arr]
+}
+
+// get first n item of array 
+// defaults to first item
+function getFirstNOfArray(arr, n = 1) {
+    return arr.slice(0, n);
+}
+
+// join all elements of array into one string
+// each element should be separated by a space
+function arrayToString(arr) {
+    return arr.join(' ')
 }
 

@@ -13,13 +13,13 @@ function recursiveExponent (base, power) {
 }
 
 // Deep array iterator (flatten nested arrays)
-function recursiveDeepIterate (arr) {
+function recursiveDeepArrayIterate (arr) {
     const flatArr = []
-    for (let i=0;i<arr.length;i++) {
-        if(Array.isArray(arr[i])) {
-            flatArr.push(...recursiveDeepIterate(arr[i]));
+    for (item of arr) {
+        if(Array.isArray(item)) {
+            flatArr.push(...recursiveDeepArrayIterate(item));
         } else { 
-            flatArr.push(arr[i]) 
+            flatArr.push(item) 
         }
     }
     return flatArr;
