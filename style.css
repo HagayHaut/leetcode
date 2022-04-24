@@ -30,7 +30,7 @@ span {
     padding: 6px 15px 6px 15px;
     border: 2px solid #F5EE9E;
     border-radius: 40px;
-    box-shadow: 3px 3px 3px 3px rgba(128, 30, 21, 0.2);
+    /* box-shadow: 3px 3px 3px 3px rgba(128, 30, 21, 0.2); */
 }
 
 #title2 {
@@ -89,7 +89,7 @@ h3 {
     border: 2px solid #F5EE9E;
     border-radius: 40px;
     box-shadow: 0px 10px 20px 0px rgba(128, 30, 21, 0.8);
-    padding: 3px;
+    padding: 6px;
     /* width: 30%;
     margin-left: 35%;
     margin-right: 35%; */
