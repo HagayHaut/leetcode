@@ -1,5 +1,29 @@
 // STRING ALGORITHMS
 
+// Translate to piglatin 
+// 1. move all begining consonants to end, followed ny 'ay'
+// 2. if starts with vowel, just add 'way'
+// toPigLatin('javascipt')
+// >> 'avascriptjay'
+// to PigLatin('object')
+// >> 'objectway'
+function toPigLatin(str) {
+  // Regex looking for any num of cons starting str, case insensitive
+  const vowelRegex = /^[^aeiou]+/i
+  // consonant(s) present in beginning
+  if(vowelRegex.test(str)) {
+    // .match() returns an array, in this case with only our starting consonants
+    const consonants = str.match(vowelRegex);
+    return str.slice(consonants[0].length) + consonants[0] + 'ay';
+  }
+  // volwel is presents at beginning
+  else {
+    return str + 'way';
+  }
+}
+
+console.log(toPigLatin('slowly'))
+
 // Return missing letter from abcd... string. If none, return undefined
 function fearNotLetter(str) {
     /* 1. starting at second char, check that each char code is one more than the char before it
@@ -26,7 +50,6 @@ function binaryTranslator(str) {
 // toOppositeCase('Hello, Stranger!')
 // >> 'hELLO, sTRANGER!'
 function toOppositeCase(str) {
-  // const charRegex = /[a-z]/i
   const arr = str.split('');
   return arr.map(char => {
     if(char === char.toUpperCase()) {
@@ -38,3 +61,11 @@ function toOppositeCase(str) {
   .join('')
 }
 
+// Return a string in alphabetical order
+// alphabetize('alphabetize')
+// >> 'aabeehilptz'
+function alphabetize(str) {
+  return str.split('')
+            .sort()
+            .join('')
+}
