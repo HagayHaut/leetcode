@@ -7,6 +7,7 @@ keys[3].onclick = () => console.log('command');
 keys[4].onclick = () => console.log('option');
 keys[5].onclick = () => console.log('J');
 
+const topics = [ 'Array', 'Object', 'Math', 'Recursion', 'String' ]
 
 const title = document.querySelector('#title')
 
@@ -18,4 +19,11 @@ function toggleButton(e) {
     } else {
         e.target.textContent = 'Local IDE REPLit';
     }
+}
+
+function randomTopic(arr) {
+    function randomFromRange(min,max) {
+        return Math.floor(Math.random() * (max - min) + min)
+    }
+    return arr[randomFromRange(0,arr.length)]
 }
