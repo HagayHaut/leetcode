@@ -26,6 +26,21 @@ function nextHigherPrime(num) {
     }
 }
 
+// Function converts number from one base to another
+// convertBase(5,10,2)
+// >> '101'
+// convertBase('E164',16,8)
+// >> '160544'
+// convertBase(1000,2,8)
+// >> '10'
+function convertBase(num,startBase,endBase) {
+  // parseInt second arg is the str base it is parsing
+  // toString takes optional argument of base, defaults to 10
+  return parseInt(num + '', startBase).toString(endBase)
+}
+
+
+
 // Fibonacci sequence generator 
 // (returns array of first n fib nums)
 function fibonacciGenerator(num) {
