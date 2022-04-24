@@ -22,8 +22,6 @@ function toPigLatin(str) {
   }
 }
 
-console.log(toPigLatin('slowly'))
-
 // Return missing letter from abcd... string. If none, return undefined
 function fearNotLetter(str) {
     /* 1. starting at second char, check that each char code is one more than the char before it
