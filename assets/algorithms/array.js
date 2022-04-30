@@ -42,7 +42,8 @@ function pascalsTriangle(numRows) {
     // starting with first two rows so there is something to add
     // return fist or both if 1 or 2
     let result = [[1],[1,1]]
-    if(numRows === 1) return result.slice(0,1);
+    if(numRows<1) return [];
+    else if(numRows === 1) return result.slice(0,1);
     else if ( numRows === 2) return result;
     // if more than two, store row above in var
     // initiate current row with 1 (need to manually add first and last because relying on sum)
