@@ -1,5 +1,7 @@
 // ARRAY ALGORITHMS WORTH SAVING
 
+
+
 // Find the most common item in an array
 // mostCommonInArray([2,1,3,1,1,6,6,2,4,2,4,1,8,1])
 //>> '1: 5 times'
@@ -21,6 +23,50 @@ function mostCommonInArray(arr) {
     return `${mostCommon[0]}: ${mostCommon[1]} times`
 }
 
+
+
+
+// Pascal's triangle
+// returns first n rows of Pascal's triangle
+// each number is sum of two numbers above it:
+//  .....1.....
+//  ....1.1....
+//  ...1.2.1...
+//  ..1.3.3.1..
+//  .1.4.6.4.1.
+
+// pascalsTriangle(4)
+// >> [[1],[1,1],[1,2,1],[1,3,3,1]]
+
+function pascalsTriangle(numRows) {
+    // starting with first two rows so there is something to add
+    // return fist or both if 1 or 2
+    let result = [[1],[1,1]]
+    if(numRows === 1) return result.slice(0,1);
+    else if ( numRows === 2) return result;
+    // if more than two, store row above in var
+    // initiate current row with 1 (need to manually add first and last because relying on sum)
+    else {
+        for(let j = 3; j <= numRows; j++) {
+            const prevRow = result[result.length-1]
+            const currentRow = [1];
+            // loop through all internal nums of current loop (nums with two parents above) 
+            // add sum of parents to current row
+            for(let i = 0; i < prevRow.length-1; i++) {
+                currentRow.push(prevRow[i]+prevRow[i+1])
+            }
+            // need to manually add last like first (no parents), then add our row to result
+            // next row will use this row as prevRow
+            currentRow.push(1)
+            result.push(currentRow)
+        }
+    }
+    return result;
+}
+
+
+
+
 // Returns new array with repeats removed
 // removeRepeats([1,1,2,3,3,4,5,6,7,7])
 // >> [1,2,3,4,5,6,7]
@@ -29,6 +75,11 @@ function removeRepeats(arr) {
     // array >> set >> array
     return Array.from(new Set(arr))
 }
+
+
+
+
+
 
 // Print nested arrays as rows
 // nestedArrayRows([[1,2,3],[4,5,6],[7,8,9]])
@@ -53,6 +104,11 @@ function nesterArrayRows(arr) {
     }
 }
 
+
+
+
+
+
 // Function that moves element to specified index
 // moveArrayElement([1,2,3,4],3,0) >> (arr,element,index)
 // >> [3,1,2,4]
@@ -65,6 +121,11 @@ function moveArrayElement(arr,element,index) {
     return arr;
 }
 
+
+
+
+
+
 // Filter blank/falsey values from array
 // filterBlank([1,0,2,null,3,'']);
 // >> [1,2,3]
@@ -73,6 +134,10 @@ function filterBlank(arr) {
     // if just value expression, blank will be falsey
     return arr.filter( value => value )
 }
+
+
+
+
 
 
 
@@ -90,12 +155,24 @@ function randomFromArray(arr) {
     return arr[randomFromRange(0,arr.length)]
 }
 
+
+
+
+
+
+
 // Return nth largest item from an array
 // nthLargestFromArray([2,4,3,5,6,7,1],3)
 // >> 5
 function nthLargestFromArray(arr,n) {
     return arr.sort((a,b) => a - b)[arr.length-n];
 }
+
+
+
+
+
+
 
 // Write a function that takes a number (n) and a value
 // return an array containing n times of that value
@@ -108,6 +185,11 @@ function nTimesValue(value,n) {
     }
     return result;
 }
+
+
+
+
+
 
 // Returns array with unique elements from two arrays
 // uniqueToOneArray([1,2,3,4],[2,3,4,5,6,7])
@@ -125,6 +207,11 @@ function uniqueToOneArray(arr1,arr2) {
 }
 
 
+
+
+
+
+
 // Create array with range including inputs
 function arrayRange(min,max) {
     const range = [];
@@ -133,6 +220,11 @@ function arrayRange(min,max) {
     }
     return range;
 }
+
+
+
+
+
 // Create array range not including inputs
 function arrayRangeBetween(min,max) {
     const range = [];
@@ -142,10 +234,17 @@ function arrayRangeBetween(min,max) {
     return range;
 }
 
+
+
+
+
 // Rotate array left one position
 function rotateLeft(arr) {
     return arr.slice(1).concat(arr[0]);
 }
+
+
+
 
 // rotate string right one position
 function rotateRight(arr) {
@@ -155,21 +254,33 @@ function rotateRight(arr) {
     return missingLast;
 }
 
+
+
+
 // check if input is an array
 function isArray(input) {
     return Array.isArray(input);
 }
+
+
+
 
 // nondestructively clone array
 function nondestructiveArrayClone(arr) {
   return [...arr]
 }
 
+
+
+
 // get first n item of array 
 // defaults to first item
 function getFirstNOfArray(arr, n = 1) {
     return arr.slice(0, n);
 }
+
+
+
 
 // join all elements of array into one string
 // each element should be separated by a space
