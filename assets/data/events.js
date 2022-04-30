@@ -10,7 +10,7 @@ keys[5].onclick = () => console.log('J');
 const topics = [ 'Array', 'Object', 'Math', 'Recursion', 'String' ]
 
 const title = document.querySelector('#title')
-const randomTopicBtn = document.querySelector('#random-topic')
+const randomTopicBtn = document.querySelector('.content-btn')
 
 title.onclick = (e) => toggleButton(e);
 randomTopicBtn.onclick = () => randomTopic(topics);
