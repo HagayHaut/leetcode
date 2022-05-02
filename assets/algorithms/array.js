@@ -77,8 +77,24 @@ function removeRepeats(arr) {
     return Array.from(new Set(arr))
 }
 
-
-
+// TWO SUM - return indices of arr elements that add up to target
+// twoSum([1, 2, 3, 5, 6], 5)
+// >> [1,2]
+// if none exist, return []
+function  twoSum(arr, target) {
+    let obj = {};
+    // if needed (compliment) exists in obj, return i (current index) plus value of object key (index of needed)
+    for(let i = 0; i < arr.length; i++) {
+      const needed = target - arr[i];
+      // if needed is not in obj, create property with num as key and index as value
+      if(obj[needed]) return [obj[needed], i];
+      else { obj[arr[i]] = i}
+    }
+    // return empty array if loop ends with no return
+    return [];
+}
+  
+  
 
 
 
