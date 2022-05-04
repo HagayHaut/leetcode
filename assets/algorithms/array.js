@@ -87,12 +87,14 @@ function  twoSum(arr, target) {
     for(let i = 0; i < arr.length; i++) {
       const needed = target - arr[i];
       // if needed is not in obj, create property with num as key and index as value
-      if(obj[needed]) return [obj[needed], i];
-      else { obj[arr[i]] = i}
+      if(needed in obj) return [obj[needed], i];
+      obj[arr[i]] = i
     }
     // return empty array if loop ends with no return
     return [];
 }
+
+console.log(twoSum([1,2,3],5))
   
   
 
