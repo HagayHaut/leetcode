@@ -94,11 +94,23 @@ function  twoSum(arr, target) {
     return [];
 }
 
-console.log(twoSum([1,2,3],5))
-  
-  
+// Rotate array right by x places
+// rotateByX([1,2,3,4,5], 3)
+// >> [3,4,5,1,2]
+function rotateByX(arr, x) {
+    const end = arr.slice(-x)
+    arr.splice(-x)
+    arr.unshift(...end)
+    return arr;
+}  
 
-
+// Add 1 to number stored as digits in array
+// addOne([2,3,9])
+// >> [1,4,0]
+function addOne(arr) {
+    const num = parseInt(arr.join('')) + 1
+    return num.toString().split('').map(num => parseInt(num))
+}
 
 // Print nested arrays as rows
 // nestedArrayRows([[1,2,3],[4,5,6],[7,8,9]])
@@ -122,11 +134,6 @@ function nesterArrayRows(arr) {
         }
     }
 }
-
-
-
-
-
 
 // Function that moves element to specified index
 // moveArrayElement([1,2,3,4],3,0) >> (arr,element,index)
