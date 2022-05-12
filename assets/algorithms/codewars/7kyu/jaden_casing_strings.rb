@@ -28,3 +28,4 @@ class String
       self.split.map(&:capitalize).join(" ")
     end
 end
+
