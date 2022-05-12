@@ -15,4 +15,3 @@ function selectionSort(arr) {
     return result;
 }
 
-console.log(selectionSort([2,-4,7,45,-0.3,6]))

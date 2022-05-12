@@ -106,7 +106,7 @@ function rotateByX(arr, x) {
 
 // Add 1 to number stored as digits in array
 // addOne([2,3,9])
-// >> [1,4,0]
+// >> [2,4,0]
 function addOne(arr) {
     const num = parseInt(arr.join('')) + 1
     return num.toString().split('').map(num => parseInt(num))
@@ -147,11 +147,6 @@ function moveArrayElement(arr,element,index) {
     return arr;
 }
 
-
-
-
-
-
 // Filter blank/falsey values from array
 // filterBlank([1,0,2,null,3,'']);
 // >> [1,2,3]
@@ -160,11 +155,6 @@ function filterBlank(arr) {
     // if just value expression, blank will be falsey
     return arr.filter( value => value )
 }
-
-
-
-
-
 
 
 // Return a random element from an array
@@ -181,24 +171,12 @@ function randomFromArray(arr) {
     return arr[randomFromRange(0,arr.length)]
 }
 
-
-
-
-
-
-
 // Return nth largest item from an array
 // nthLargestFromArray([2,4,3,5,6,7,1],3)
 // >> 5
 function nthLargestFromArray(arr,n) {
     return arr.sort((a,b) => a - b)[arr.length-n];
 }
-
-
-
-
-
-
 
 // Write a function that takes a number (n) and a value
 // return an array containing n times of that value
@@ -211,11 +189,6 @@ function nTimesValue(value,n) {
     }
     return result;
 }
-
-
-
-
-
 
 // Returns array with unique elements from two arrays
 // uniqueToOneArray([1,2,3,4],[2,3,4,5,6,7])
@@ -232,12 +205,6 @@ function uniqueToOneArray(arr1,arr2) {
     return uniques;
 }
 
-
-
-
-
-
-
 // Create array with range including inputs
 function arrayRange(min,max) {
     const range = [];
@@ -246,10 +213,6 @@ function arrayRange(min,max) {
     }
     return range;
 }
-
-
-
-
 
 // Create array range not including inputs
 function arrayRangeBetween(min,max) {
@@ -262,15 +225,10 @@ function arrayRangeBetween(min,max) {
 
 
 
-
-
 // Rotate array left one position
 function rotateLeft(arr) {
     return arr.slice(1).concat(arr[0]);
 }
-
-
-
 
 // rotate string right one position
 function rotateRight(arr) {
@@ -281,23 +239,15 @@ function rotateRight(arr) {
 }
 
 
-
-
 // check if input is an array
 function isArray(input) {
     return Array.isArray(input);
 }
 
-
-
-
 // nondestructively clone array
 function nondestructiveArrayClone(arr) {
   return [...arr]
 }
-
-
-
 
 // get first n item of array 
 // defaults to first item
@@ -305,12 +255,43 @@ function getFirstNOfArray(arr, n = 1) {
     return arr.slice(0, n);
 }
 
-
-
-
 // join all elements of array into one string
 // each element should be separated by a space
 function arrayToString(arr) {
     return arr.join(' ')
 }
+
+// Manual Array Methods
+
+// map function >> returns new modified array
+// new array has same number of elements, passing through callback
+// original array not modified
+const manualMap = (arr, cb) => {
+    const result = []
+    for(item of arr) {
+        result.push(cb(item))
+    }
+    return result
+}
+
+// filter >> returns new array with only items that pass truth test (cb)
+// original array remains unchanged
+const manualFilter = (arr, cb) => {
+    const result = [];
+    for(item of arr) {
+        if(cb(item)) result.push(item)
+    }
+    return result;
+}
+
+// find >> returns first item that passed truth test (cb)
+// original array remains unchanged
+const manualFind = (arr, cb) => {
+    for(item of arr) {
+        if(cb(item)) return item;
+    }
+    return [];
+}
+
+const arr = [1,2,NaN,false,6,'pig']
 

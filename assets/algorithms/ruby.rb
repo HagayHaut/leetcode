@@ -38,5 +38,12 @@ def count_primes(n)
     return count 
 end
 
-
+# return dictionary with sum, product, and average of given array
+def sum_product_average(arr)
+    hash = {}
+    hash[:sum] = arr.reduce(0) { |pre,cur| pre + cur } * 1.0
+    hash[:product] = arr.reduce(1) { |pre,cur| pre * cur } * 1.0
+    hash[:average] = hash[:sum] / arr.length * 1.0
+    return hash
+end
 
