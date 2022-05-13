@@ -10,8 +10,10 @@
 
 
 
-// // my solution
+// my solution
 const invert = array => array.map(n => n === 0 ? -0 : n > 0 ? -n : n + -2 * n)
+// a week later
+const flip = arr => arr.map(x => -x) 
 
 
 
