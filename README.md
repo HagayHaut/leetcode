@@ -10,6 +10,8 @@ To use:
     ( Command + Option + J on Mac, Ctrl + Shift + J on Windows )
 4. Write code in index.js, test in console (make sure to save IDE and refresh broswer)
 
+To view in the browser, click [here](https://hagayhaut.github.io/replit/).
+
 Other files:
 1. I'm using this repo to store algorithms
 2. Algorithms I enjoyed, or want to go back 
