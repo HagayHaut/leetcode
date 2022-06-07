@@ -1,4 +1,4 @@
-# Simple REPLit and Algorithm Storage
+# REPL and Algorithm Storage
 ## Practice Data Structures and Algoritms
 ### Store your solutions and comments
 
