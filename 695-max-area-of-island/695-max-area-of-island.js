@@ -2,6 +2,7 @@
  * @param {number[][]} grid
  * @return {number}
  */
+
 const maxAreaOfIsland = function(grid) {
     const seen = new Set(),
           ROWS = grid.length,
@@ -11,20 +12,19 @@ const maxAreaOfIsland = function(grid) {
     
     const dfs = (r, c) => {
         if (
-            r < 0 || 
-            c < 0 ||
-            r >= ROWS || 
-            c >= COLS || 
-            grid[r][c] === 0 ||
-            seen.has(`${r},${c}`)
+            r >= 0 && 
+            c >= 0 &&
+            r < ROWS && 
+            c < COLS && 
+            grid[r][c] === 1 &&
+            !seen.has(`${r},${c}`)
         ) {
-            return 0;
+            seen.add(`${r},${c}`);
+            const island = 1 + dfs(r+1,c) + dfs(r-1,c) + dfs(r,c+1) + dfs(r,c-1);
+            maxIsland = Math.max(maxIsland, island);
+            return island;
         }
-        
-        seen.add(`${r},${c}`);
-        const island = 1 + dfs(r+1,c) + dfs(r-1,c) + dfs(r,c+1) + dfs(r,c-1);
-        maxIsland = Math.max(maxIsland, island);
-        return island;
+        return 0;
     }
     
     for (let r = 0; r < ROWS; r++) {
