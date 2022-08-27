@@ -6,7 +6,7 @@
 // can do with memoization or dp
 // but better with greedy algorithm
 // get difference of costB - costA and sort by diff (store c1 & c2)
-// first half go to cityA, second half to cityA
+// first half go to cityB, second half to cityA
 const twoCitySchedCost = function(costs) {
     const diffs = costs.map(([a, b]) => [b - a, a, b]);
     diffs.sort((a, b) => a[0] - b [0]);
