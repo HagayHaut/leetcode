@@ -30,13 +30,7 @@ const connect = function(root) {
             if (node.right) q.push(node.right);
         }
         
-        level.forEach((node, i) => {
-            if (i === level.length - 1) {
-                node.next = null;
-            } else {
-                node.next = level[i+1];
-            }
-        })
+        level.forEach((node, i) => node.next = i === level.length - 1 ? null : level[i + 1]);
     }
     return root;
 };
