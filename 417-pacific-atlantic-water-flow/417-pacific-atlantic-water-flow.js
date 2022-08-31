@@ -18,7 +18,7 @@
 const pacificAtlantic = function(heights) {
     const ROWS = heights.length,
           COLS = heights[0].length,
-          dirs = [[1,0], [-1,0],[0,1],[0,-1]];
+          dirs = [[1,0],[-1,0],[0,1],[0,-1]];
     
     const pac = Array(ROWS).fill().map(_ => Array(COLS).fill(false)),
           atl = Array(ROWS).fill().map(_ => Array(COLS).fill(false));
@@ -42,13 +42,13 @@ const pacificAtlantic = function(heights) {
     }
     
     for (let r = 0; r < ROWS; r++) {
-        dfs(r, 0, pac, -Infinity);
-        dfs(r, COLS - 1, atl, -Infinity);
+        dfs(r, 0, pac, 0);
+        dfs(r, COLS - 1, atl, 0);
     }
     
     for (let c = 0; c < COLS; c++) {
-        dfs(0, c, pac, -Infinity);
-        dfs(ROWS - 1, c, atl, -Infinity);
+        dfs(0, c, pac, 0);
+        dfs(ROWS - 1, c, atl, 0);
     }
     
     const res = [];
@@ -64,40 +64,3 @@ const pacificAtlantic = function(heights) {
     
     return res;
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
