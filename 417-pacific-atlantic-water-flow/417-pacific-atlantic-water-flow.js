@@ -47,7 +47,7 @@ const pacificAtlantic = function(heights) {
         dfs(0, c, pac, -Infinity);
         dfs(rows-1, c, atl, -Infinity);
     }
-    // gp through left and right
+    // go through left and right
     for (let r = 0; r < rows; r++) {
         dfs(r, 0, pac, -Infinity);
         dfs(r, cols-1, atl, -Infinity);
