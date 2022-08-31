@@ -9,7 +9,7 @@ const isPalindrome = function(x) {
     while (x >= div * 10) div *= 10;
     
     while (x) {
-        const left = Math.floor(x / div);
+        const left = ~~(x / div);
         const right = x % 10;
         if (left !== right) return false;
         x = ~~((x % div) / 10);
