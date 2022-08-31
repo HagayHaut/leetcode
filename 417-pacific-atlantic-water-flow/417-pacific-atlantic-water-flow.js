@@ -36,7 +36,9 @@ const pacificAtlantic = function(heights) {
         }
         
         ocean[r][c] = true;
-        dirs.forEach(([row, col]) => dfs(r+row,c+col,ocean,heights[r][c]));
+        dirs.forEach(([row, col]) => {
+            dfs(r+row, c+col, ocean, heights[r][c]);
+        });
     }
     
     for (let r = 0; r < ROWS; r++) {
