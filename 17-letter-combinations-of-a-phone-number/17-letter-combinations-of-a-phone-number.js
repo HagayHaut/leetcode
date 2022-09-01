@@ -24,9 +24,7 @@ const letterCombinations = function(digits) {
         }
         // decision to include and not include;
         for (const c of phone[digits[i]]) {
-            comb.push(c);
-            dfs(i + 1, comb);
-            comb.pop();
+            dfs(i + 1, [...comb, c])
         }
     }
     
