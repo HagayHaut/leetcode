@@ -16,20 +16,14 @@ const averageOfLevels = function(root) {
     
     while (q.length) {
         const qLen = q.length;
-        
-        let levelSum = 0,
-            nodeCount = 0;
-        
+        let levelSum = 0;
         for (let i = 0; i < qLen; i++) {
             const node = q.shift();
-            nodeCount++;
             levelSum += node.val;
             if (node.left) q.push(node.left);
             if (node.right) q.push(node.right);
         }
-        
-        averages.push(levelSum / nodeCount);
+        averages.push(levelSum / qLen);
     }
-    
     return averages;
 };
