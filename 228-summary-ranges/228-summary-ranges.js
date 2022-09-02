@@ -2,21 +2,21 @@
  * @param {number[]} nums
  * @return {string[]}
  */
+
 const summaryRanges = function(nums) {
     const ranges = [];
     
     let i = 0;
     
     while (i < nums.length) {
-        const range = [`${nums[i]}`];
-        
-        while (nums[i] + 1 === nums[i+1]) {
-            i++;
-            range.push(`${nums[i]}`);
+        const first = nums[i];
+        let last;
+        while (nums[i] === nums[i+1] - 1) {
+            last = nums[++i];
         }
-        if (range.length === 1) ranges.push(range[0]);
-        else ranges.push(`${range[0]}->${range[range.length - 1]}`)
         i++;
+        ranges.push(last ? `${first}->${last}` : `${first}`)
     }
+    
     return ranges;
 };
