@@ -4,9 +4,6 @@
  * @return {number[]}
  */
 const numsSameConsecDiff = function(n, k) {
-    // precomputed edge case for only leading 0
-    if (n === 1) return [0,1,2,3,4,5,6,7,8,9];
-    
     const result = [];
     
     const backtrack = (curr) => {
