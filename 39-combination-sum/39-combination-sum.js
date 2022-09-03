@@ -6,26 +6,19 @@
 
 // backtracking decision tree problem
 const combinationSum = function(candidates, target) {
-    const res = [];
+    const combinations = [];
     
-    const dfs = (comb, sum, index) => {
-        if (sum > target) return;
-        if (sum === target) {
-            res.push([...comb]);
-            return;
-        }
-         
+    const dfs = (comb, curSum, index) => {
+        if (curSum > target) return;
+        if (curSum === target) return combinations.push([...comb]);
+        
         for (let i = index; i < candidates.length; i++) {
-            // choose
-            comb.push(candidates[i]);
-            // explore
-            dfs(comb, sum + candidates[i], i);
-            // unchoose
-            comb.pop();
+            const curVal = candidates[i];
+            dfs([...comb, curVal], curSum + curVal, i);
         }
     }
     
     dfs([], 0, 0);
     
-    return res;
+    return combinations;
 };
