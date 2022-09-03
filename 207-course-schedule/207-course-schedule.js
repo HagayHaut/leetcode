@@ -24,12 +24,12 @@ const canFinish = function(numCourses, prereqs) {
     }
     
     while (q.length) {
-        const crs = q.shift();
+        const req = q.shift();
         // only search reqs if crs has them
-        if (graph.has(crs)) {
-            graph.get(crs).forEach(req => {
-                remainingReqs[req]--;
-                if (!remainingReqs[req]) q.push(req);
+        if (graph.has(req)) {
+            graph.get(req).forEach(crs => {
+                remainingReqs[crs]--;
+                if (!remainingReqs[crs]) q.push(crs);
             })
         }
         
