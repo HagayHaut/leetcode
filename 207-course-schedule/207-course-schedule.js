@@ -7,41 +7,34 @@
 // problem boils down to 
 // finding cycle in directed graph
 const canFinish = function(numCourses, prereqs) {
-    // adjacency list maps courses to their prereqs 
-    const adj = Array(numCourses).fill().map(x => []);
-    const visited = new Set();
-    const arrive = Array(numCourses).fill(0);
-    const depart = Array(numCourses).fill(0);
-    // build graph
+    const graph = new Map();
+    const q = [];
+    let completed = 0;
+    const remainingReqs = Array(numCourses).fill(0);
+    
+    // build adjacency list
     prereqs.forEach(([crs, req]) => {
-        adj[req].push(crs);
+        graph.has(req) ? graph.get(req).push(crs) : graph.set(req, [crs]);
+        remainingReqs[crs]++;
     })
     
-    const dfs = (node, arrive, depart) => {
-        arrive[node]++;
+    // start bfs from nodes with no incoming edges
+    for (let i = 0; i < numCourses; i++) {
+        if (!remainingReqs[i]) q.push(i);
+    }
+    
+    while (q.length) {
+        const crs = q.shift();
+        // only search reqs if crs has them
+        if (graph.has(crs)) {
+            graph.get(crs).forEach(req => {
+                remainingReqs[req]--;
+                if (!remainingReqs[req]) q.push(req);
+            })
+        }
         
-        for (const neighbor of adj[node]) {
-            if (!visited.has(neighbor)) {
-                visited.add(neighbor);
-                
-                if (dfs(neighbor, arrive, depart)) {
-                    return true;
-                }
-            } else {
-                if (!depart[neighbor]) return true;
-            }
-        }
-        depart[node]++;
-        return false;
+        completed++;
     }
     
-    for (let node = 0; node < numCourses; node++) {
-        if (!visited.has(node)) {
-            if (dfs(node, arrive, depart)) {
-                return false;
-            }
-        }
-    }
-    
-    return true;
-};
+    return completed >= numCourses;
+}
