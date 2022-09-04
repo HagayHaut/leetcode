@@ -16,6 +16,7 @@
 // { 0, 5, 11, 16, 10, 21, 1, 6, 12, 17, 22 }
 // now you have the list of possible sums
 // if it contains 11, return true, else false
+// (you can assume if there is one 11, there is another)
 
 // O(n * sum(nums)) time
 // O(sum(nums)) space
