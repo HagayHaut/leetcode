@@ -4,7 +4,6 @@
  */
 
 const maxAreaOfIsland = function(grid) {
-    const seen = new Set();
     const ROWS = grid.length;
     const COLS = grid[0].length;
     const directions = [[1,0],[-1,0],[0,1],[0,-1]];
@@ -13,10 +12,10 @@ const maxAreaOfIsland = function(grid) {
     const isOB = (r, c) => r < 0 || c < 0 || c >= COLS || r >= ROWS;
     
     const dfs = (r, c) => {
-        if (isOB(r, c) || seen.has(`${r},${c}`) || !grid[r][c]) {
+        if (isOB(r, c) || !grid[r][c]) {
             return 0;
         }
-        seen.add(`${r},${c}`);
+        grid[r][c] = 0;
         let island = 0;
         directions.forEach(([row, col]) => {
             island += dfs(r + row, c + col);
