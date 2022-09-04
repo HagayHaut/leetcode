@@ -33,6 +33,7 @@ const canPartition = function(nums) {
             // decision to add current, and not to
             nextDP.add(t + nums[i]);
             nextDP.add(t);
+            if (t + nums[i] === sum / 2) return true;
         })
         dp = nextDP;
     }
