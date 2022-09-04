@@ -15,7 +15,6 @@ const findPeakElement = function(nums) {
         const next = safeGet(m + 1);
         const prev = safeGet(m - 1);
         if (prev < curr && next < curr) return m;
-        
         if (curr > next) return bs(l, m - 1);
         else return bs(m + 1, r);
     }
