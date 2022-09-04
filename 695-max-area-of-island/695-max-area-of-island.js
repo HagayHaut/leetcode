@@ -4,36 +4,34 @@
  */
 
 const maxAreaOfIsland = function(grid) {
-    const seen = new Set(),
-          ROWS = grid.length,
-          COLS = grid[0].length;
-    
+    const seen = new Set();
+    const ROWS = grid.length;
+    const COLS = grid[0].length;
+    const directions = [[1,0],[-1,0],[0,1],[0,-1]];
     let maxIsland = 0;
     
+    const isOB = (r, c) => r < 0 || c < 0 || c >= COLS || r >= ROWS;
+    
     const dfs = (r, c) => {
-        if (
-            r >= 0 && 
-            c >= 0 &&
-            r < ROWS && 
-            c < COLS && 
-            grid[r][c] === 1 &&
-            !seen.has(`${r},${c}`)
-        ) {
-            seen.add(`${r},${c}`);
-            const island = 1 + dfs(r+1,c) + dfs(r-1,c) + dfs(r,c+1) + dfs(r,c-1);
-            maxIsland = Math.max(maxIsland, island);
-            return island;
+        if (isOB(r, c) || seen.has(`${r},${c}`) || !grid[r][c]) {
+            return 0;
         }
-        return 0;
+        seen.add(`${r},${c}`);
+        let island = 0;
+        directions.forEach(([row, col]) => {
+            island += dfs(r + row, c + col);
+        })
+        return 1 + island;
     }
     
     for (let r = 0; r < ROWS; r++) {
         for (let c = 0; c < COLS; c++) {
-            if (grid[r][c] === 1) {
-                dfs(r, c);
+            if (grid[r][c]) {
+                maxIsland = Math.max(maxIsland, dfs(r, c));
             }
         }
     }
+    
     return maxIsland;
 };
 
