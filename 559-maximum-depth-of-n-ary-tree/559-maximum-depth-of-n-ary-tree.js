@@ -12,9 +12,17 @@
  */
 const maxDepth = function(root) {
     if (!root) return 0;
-    let depth = 0;
-    root.children.forEach(child => {
-        depth = Math.max(depth, maxDepth(child));
-    })
-    return depth + 1;
+    
+    const q = [root];
+    let levels = 0;
+    
+    while (q.length) {
+        const qLen = q.length;
+        levels++;
+        for (let i = 0; i < qLen; i++) {
+            const node = q.shift();
+            node.children.forEach(child => q.push(child));
+        }
+    }
+    return levels;
 };
