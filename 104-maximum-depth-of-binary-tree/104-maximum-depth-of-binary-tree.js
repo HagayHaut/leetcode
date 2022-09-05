@@ -11,11 +11,19 @@
  * @return {number}
  */
 const maxDepth = function(root) {
-    const dfs = node => {
-        if (!node) return 0;
-        const left = dfs(node.left),
-              right = dfs(node.right);
-        return 1 + Math.max(left, right);
+    if (!root) return 0;
+    let levels = 0;
+    const q = [root];
+    
+    while (q.length) {
+        const qLen = q.length;
+        levels++;
+        for (let i = 0; i < qLen; i++) {
+            const node = q.shift();
+            if (node.left) q.push(node.left);
+            if (node.right) q.push(node.right);
+        }
     }
-    return dfs(root);
+    
+    return levels;
 };
