@@ -14,19 +14,11 @@
 // perform DFS to check if all values
 // are BETWEEN the child node values
 const isValidBST = function(root) {
-    
-    // the recursive DFS
-    const valid = (node, left, right) => {
-        // null nodes are valid
+    const dfs = (node, left, right) => {
         if (!node) return true;
-        
-        // check if value is BETWEEN
-        if (node.val >= right || node.val <= left) {
-            return false;
-        }
-        
-        return (valid(node.left, left, node.val) && 
-                valid(node.right, node.val, right))
+        if (left >= node.val || right <= node.val) return false;
+        return dfs(node.left, left, node.val) &&
+               dfs(node.right, node.val, right);
     }
-    return valid(root);
+    return dfs(root);
 };
