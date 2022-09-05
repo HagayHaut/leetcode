@@ -4,14 +4,13 @@
  * @return {number}
  */
 const removeElement = function(nums, val) {
-    if (!nums.length) return 0;
-    let validSize = 0;
-    for (let right = 0 ; right < nums.length; right++) {
-        if (nums[right] !== val) {
-            nums[validSize] = nums[right];
-            validSize++;
-        }
+    const swap = (i, j) => (
+        [nums[i], nums[j]] = [nums[j], nums[i]]
+    );
+    let l = 0;
+    for (let r = 0; r < nums.length; r++) {
+        if (nums[r] !== val) swap(l, r), l++;
     }
-    return validSize;
+    return l;
 };
 
