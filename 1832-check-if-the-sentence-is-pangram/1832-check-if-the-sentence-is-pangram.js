@@ -3,15 +3,9 @@
  * @return {boolean}
  */
 const checkIfPangram = function(sentence) {
-    const aCode = 'a'.charCodeAt();
-    const letters = {};
+    const letters = new Set();
     for (const c of sentence) {
-        letters[c] = true;
+        letters.add(c);
     }
-    for (let i = 0; i < 26; i++) {
-        if (!letters[String.fromCharCode(aCode + i)]) {
-            return false;
-        }
-    }
-    return true;
+    return letters.size >= 26
 };
