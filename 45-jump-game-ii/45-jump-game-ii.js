@@ -23,6 +23,7 @@ const jump = function(nums) {
     let l = 0,
         r = 0;
     
+    // guaranteed to reach the last spot
     while (r < nums.length - 1) {
         // find current reach
         let farthest = 0;
