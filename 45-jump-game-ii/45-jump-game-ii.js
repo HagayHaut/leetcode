@@ -9,6 +9,7 @@
 // [2,3,1,1,4]
 // 2 can reach 3 & 1
 // so consider all the places 3 & 1 can reach
+// get reach of each level, repeat
 // 2 is level 0,
 // 3 & 1 are level 1
 // 1 & 4 are level 2
