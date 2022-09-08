@@ -15,8 +15,9 @@ const minPathSum = function(grid) {
     
     grid.forEach((row, i) => {
         row.forEach((n, j) => {
-            if (!i && !j) return;
-            grid[i][j] += Math.min(safeGet(i - 1, j), safeGet(i, j - 1));
+            if (i || j) {
+                grid[i][j] += Math.min(safeGet(i - 1, j), safeGet(i, j - 1));
+            }
         })
     })
     
