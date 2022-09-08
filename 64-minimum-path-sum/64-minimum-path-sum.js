@@ -2,6 +2,12 @@
  * @param {number[][]} grid
  * @return {number}
  */
+
+// DP solution => 
+// each cell is gets added the minimum
+// path sum from top and left
+// if OB, compare with Infinity
+// last element is result
 const minPathSum = function(grid) {
     const safeGet = (r, c) => (
         r < 0 || c < 0 ? Infinity : grid[r][c]
