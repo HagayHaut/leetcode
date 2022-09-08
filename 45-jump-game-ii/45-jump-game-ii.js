@@ -26,12 +26,12 @@ const jump = function(nums) {
     // guaranteed to reach the last spot
     while (r < nums.length - 1) {
         // find current reach
-        let farthest = 0;
+        let reach = 0;
         for (let i = l; i <= r; i++) {
-            farthest = Math.max(farthest, i + nums[i]);
+            reach = Math.max(reach, i + nums[i]);
         }
         l = r + 1; 
-        r = farthest;
+        r = reach;
         level++;
     }
     
