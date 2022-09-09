@@ -15,8 +15,9 @@ const isValidSudoku = function(board) {
             cols[c] ||= new Set();
             squares[s] ||= new Set();
             if (
-                rows[r].has(value) || cols[c].has(value)
-                || squares[s].has(value)
+                rows[r].has(value) || 
+                cols[c].has(value) || 
+                squares[s].has(value)
             ) return false;
             rows[r].add(value);
             cols[c].add(value);
