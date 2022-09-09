@@ -4,13 +4,12 @@
  */
 
 const groupAnagrams = function(strs) {
-    const anags = {};
-    
+    const groups = new Map();
     for (const word of strs) {
         const key = word.split('').sort().join('');
-        anags[key] = anags[key] || [];
-        anags[key].push(word);
+        groups.set(key, groups.get(key) ?? []);
+        groups.get(key).push(word);
     }
     
-    return Object.values(anags);
+    return Array.from(groups.values());
 };
