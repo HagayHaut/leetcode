@@ -11,6 +11,7 @@
  * @return {number}
  */
 const maxLevelSum = function(root) {
+    if (!root) return 0;
     const q = [root];
     
     let minLevel,
