@@ -11,7 +11,9 @@ const findOriginalArray = function(changed) {
     
     const decrementFreqOf = n => {
         const count = freqs.get(n);
-        count > 1 ? freqs.set(n, count - 1) : freqs.delete(n);
+        count > 1 
+            ? freqs.set(n, count - 1) 
+            : freqs.delete(n);
     }
     
     changed.forEach(n => {
