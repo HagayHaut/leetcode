@@ -18,7 +18,7 @@ const findOriginalArray = function(changed) {
     
     changed.forEach(n => {
         if (!freqs.has(n / 2)) {
-            freqs.set(n, (freqs.get(n) || 0) + 1);
+            freqs.set(n, (freqs.get(n) ?? 0) + 1);
         } else {
             res.push(n / 2);
             decrementFreqOf(n / 2);
