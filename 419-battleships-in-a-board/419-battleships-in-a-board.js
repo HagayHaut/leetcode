@@ -2,6 +2,7 @@
  * @param {character[][]} board
  * @return {number}
  */
+
 const countBattleships = function(board) {
     const n = board.length,
           m = board[0].length,
