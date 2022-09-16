@@ -12,15 +12,12 @@
  */
 const invertTree = function(root) {
    if (root) {
-       swap(root);
+       const tmp = root.left;
+       root.left = root.right;
+       root.right = tmp;
        invertTree(root.left)
        invertTree(root.right)
    }
     return root;
 };
 
-const swap = (node) => {
-   const temp = node.right;
-    node.right = node.left;
-    node.left = temp;
-}
