@@ -7,23 +7,19 @@
  * }
  */
 
-/**
+/**6
  * @param {Employee[]} employees
  * @param {number} id
  * @return {number}
  */
 var GetImportance = function(employees, id) {
-    const q = [];
     const map = {};
-    employees.forEach(e => {
-        map[e.id] = e;
-    });
-    q.push(id);
+    employees.forEach(e => map[e.id] = e);
     let result = 0;
-    while (q.length) {
-        const emp = q.shift();
-        result += map[emp].importance;
-        map[emp].subordinates.forEach(s => q.push(s));
+    const dfs = emp_id => {
+        result += map[emp_id].importance;
+        map[emp_id].subordinates.forEach(s => dfs(s));
     }
+    dfs(id);
     return result;
 };
