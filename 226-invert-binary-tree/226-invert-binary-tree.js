@@ -11,13 +11,18 @@
  * @return {TreeNode}
  */
 const invertTree = function(root) {
-   if (root) {
-       const tmp = root.left;
-       root.left = root.right;
-       root.right = tmp;
-       invertTree(root.left)
-       invertTree(root.right)
-   }
+    if (!root) return root;
+    const q = [root];
+    
+    while (q.length) {
+        const node = q.shift();
+        const temp = node.left;
+        node.left = node.right;
+        node.right = temp;
+        if (node.left) q.push(node.left);
+        if (node.right) q.push(node.right);
+    }
+    
     return root;
 };
 
