@@ -10,24 +10,27 @@
 const exist = function(board, word) {
     const n = board.length,
           m = board[0].length,
-          path = new Set();
+          directions = [[1,0],[-1,0],[0,1],[0,-1]],
+          seen = new Set();
+    
+    const isOB = (r, c) => r < 0 || c < 0 || r >= n || c >= m;
     
     const dfs = (r, c, i) => {
         if (i === word.length) return true;
+        
         if (
-            r >= 0 &&
-            c >= 0 &&
-            r < n &&
-            c < m &&
-            !path.has(`${r},${c}`) &&
-            word[i] === board[r][c]
+            isOB(r, c) ||
+            seen.has(`${r},${c}`) ||
+            board[r][c] !== word[i]
         ) {
-            path.add(`${r},${c}`);
-            const res = dfs(r+1,c,i+1) || dfs(r-1,c,i+1) || dfs(r,c+1,i+1) || dfs(r,c-1,i+1);
-            path.delete(`${r},${c}`);
-            return res;
+            return false;
         }
-        return false;
+        
+        seen.add(`${r},${c}`);
+        let res = false;
+        directions.forEach(([row, col]) => res ||= dfs(r+row,c+col,i+1));
+        seen.delete(`${r},${c}`);
+        return res;
     }
     
     for (let r = 0; r < n; r++) {
