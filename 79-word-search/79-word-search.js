@@ -10,20 +10,21 @@
 const exist = function(board, word) {
     const n = board.length,
           m = board[0].length,
+          dirs = [[1,0],[-1,0],[0,1],[0,-1]],
           path = new Set();
+    
+    const isIB = (r, c) => r >= 0 && c >= 0 && r < n && c < m;
     
     const dfs = (r, c, i) => {
         if (i === word.length) return true;
         if (
-            r >= 0 &&
-            c >= 0 &&
-            r < n &&
-            c < m &&
+            isIB(r, c) &&
             !path.has(`${r},${c}`) &&
             word[i] === board[r][c]
         ) {
             path.add(`${r},${c}`);
-            const res = dfs(r+1,c,i+1) || dfs(r-1,c,i+1) || dfs(r,c+1,i+1) || dfs(r,c-1,i+1);
+            let res = false;
+            dirs.forEach(([row, col]) => res ||= dfs(r+row, c+col, i+1));
             path.delete(`${r},${c}`);
             return res;
         }
