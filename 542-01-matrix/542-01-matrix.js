@@ -5,44 +5,38 @@
 const updateMatrix = function(mat) {
     let m = mat.length,
         n = mat[0].length,
-        queue = [],
-        result = [],
-        directions = [[1,0],[-1,0],[0,1],[0,-1]],
-        newRow;
+        q = [],
+        result = Array(m).fill().map(() => Array(n)),
+        directions = [[1,0],[-1,0],[0,1],[0,-1]];
     
-    for (let y = 0; y < m; y++) {
-        (newRow = []).length = n;
-        result.push(newRow);
-        for (let x = 0; x < n; x++) {
-            if (mat[y][x] === 0) {
-                queue.push([y,x]);
-                result[y][x] = 0;
+    const isOB = (r, c) => r < 0 || c < 0 || r >= m || c >= n;
+    
+    for (let r = 0; r < m; r++) {
+        for (let c = 0; c < n; c++) {
+            if (mat[r][c]) {
+                result[r][c] = Infinity;
             } else {
-                result[y][x] = Infinity;
+                result[r][c] = 0;
+                q.push([r, c]);
             }
         }
     }
     
-    while (queue.length) {
-        let [y, x] = queue.shift(),
-            currVal = result[y][x];
+    while (q.length) {
+        const [r, c] = q.shift(),
+              curVal = result[r][c];
         
-        for (const dir of directions) {
-            const currX = x + dir[1],
-                  currY = y + dir[0];
-            if (
-                currY < 0 ||
-                currY >= m ||
-                currX < 0 ||
-                currX >= n
-            ) {
-                continue;
+        directions.forEach(([dr, dc]) => {
+            const row = dr + r,
+                  col = dc + c;
+            
+            if (isOB(row, col)) return;
+            
+            if (result[row][col] > curVal + 1) {
+                result[row][col] = curVal + 1;
+                q.push([row, col]);
             }
-            else if (result[currY][currX] > currVal + 1) {
-                result[currY][currX] = currVal + 1;
-                queue.push([currY, currX]);
-            }
-        }
+        })
     }
     return result;
 };
