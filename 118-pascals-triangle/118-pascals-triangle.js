@@ -8,8 +8,8 @@ var generate = function(numRows) {
     for(let i = 3; i <= numRows; i++) {
         const prevRow = result[result.length-1]
         const currentRow = [1];
-        for(let i = 0; i < prevRow.length-1; i++) {
-            currentRow.push(prevRow[i]+prevRow[i+1])
+        for(let j = 0; j < prevRow.length-1; j++) {
+            currentRow.push(prevRow[j]+prevRow[j+1])
         }
         currentRow.push(1)
         result.push(currentRow)
