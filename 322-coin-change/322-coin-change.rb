@@ -2,14 +2,14 @@
 # @param {Integer} amount
 # @return {Integer}
 def coin_change(coins, amount)
-    dp = Array.new amount + 1, false
+    dp = [false] * (amount + 1)
     dp[0] = 0
-    (1..amount).each do |i|
-        possibles = []
+    1.upto(amount) do |i|
+        poss = []
         coins.each do |coin|
-            possibles << dp[i - coin] if i >= coin && dp[i - coin] 
+            poss << dp[i - coin] if coin <= i && dp[i - coin] 
         end
-        dp[i] = possibles.min + 1 if !possibles.empty?
+        dp[i] = poss.min + 1 if poss.size > 0
     end
-    return dp[-1] ? dp[-1] : -1
+    dp[-1] ? dp[-1] : -1
 end
