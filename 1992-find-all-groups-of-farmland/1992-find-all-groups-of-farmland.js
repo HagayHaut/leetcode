@@ -10,12 +10,8 @@ const findFarmland = function(land) {
     const valid = (r, c) => r >= 0 && c >= 0 && r < m && c < n;
     
     const getMaxRC = (r, c) => {
-        while (r < m - 1 && land[r+1][c]) {
-            r++;
-        }
-        while (c < n - 1 && land[r][c+1]) {
-            c++;
-        }
+        while (r < m - 1 && land[r+1][c]) r++;
+        while (c < n - 1 && land[r][c+1]) c++;
         return [r, c];
     }
     
