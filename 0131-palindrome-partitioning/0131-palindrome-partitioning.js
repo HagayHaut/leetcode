@@ -9,7 +9,6 @@
 
 const partition = function(s) {
     const res = [];
-    const part = [];
     
     const isPalindrome = (l, r) => {
         while (l < r) {
@@ -18,16 +17,14 @@ const partition = function(s) {
         return true;
     }
     
-    const backtrack = i => {
+    const backtrack = (i, part = []) => {
         if (i >= s.length) {
-            return res.push([...part])
+            return res.push(part);
         };
         
         for (let j = i; j < s.length; j++) {
             if (isPalindrome(i, j)) {
-                part.push(s.slice(i, j + 1));
-                backtrack(j + 1);
-                part.pop();
+                backtrack(j + 1, [...part, s.slice(i, j + 1)]);
             }
         }
     }
