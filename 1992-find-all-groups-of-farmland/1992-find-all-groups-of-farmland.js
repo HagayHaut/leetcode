@@ -4,8 +4,7 @@
  */
 const findFarmland = function(land) {
     const m = land.length,
-          n = land[0].length,
-          dirs = [[0,1],[1,0]];
+          n = land[0].length;
     
     const valid = (r, c) => r >= 0 && c >= 0 && r < m && c < n;
     
@@ -18,7 +17,8 @@ const findFarmland = function(land) {
     const flood = (r, c) => {
         if (valid(r, c) && land[r][c]) {
             land[r][c] = 0;
-            dirs.forEach(([dr, dc]) => flood(r + dr, c + dc));
+            flood(r + 1, c);
+            flood(r, c + 1);
         }
     }
     
