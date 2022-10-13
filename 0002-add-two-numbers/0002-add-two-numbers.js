@@ -12,25 +12,21 @@
  */
 const addTwoNumbers = function(l1, l2) {
     const dummy = new ListNode();
-    
-    let curr = dummy,
-        carry = 0;
+    let tail = dummy;
+    let carry = 0;
     
     while (l1 || l2 || carry) {
-        const v1 = l1?.val || 0;
-        const v2 = l2?.val || 0;
-        const val = v1 + v2 + carry;
-        
+        const val = (l1 ? l1.val : 0) + (l2 ? l2.val : 0) + carry;
         carry = ~~(val / 10);
-        curr.next = new ListNode(val % 10);
-        curr = curr.next;
-        
-        if (l1) l1 = l1.next;
-        if (l2) l2 = l2.next;
+        const node = new ListNode(val % 10);
+        tail.next = node;
+        tail = tail.next;
+        l1 = l1?.next;
+        l2 = l2?.next;
     }
     
     return dummy.next;
-};
+}
 
 
 
