@@ -17,9 +17,8 @@ const addTwoNumbers = function(l1, l2) {
     
     while (l1 || l2 || carry) {
         const val = (l1 ? l1.val : 0) + (l2 ? l2.val : 0) + carry;
-        carry = ~~(val / 10);
-        const node = new ListNode(val % 10);
-        tail.next = node;
+        carry = ~~(val / 10); 
+        tail.next = new ListNode(val % 10);
         tail = tail.next;
         l1 = l1?.next;
         l2 = l2?.next;
