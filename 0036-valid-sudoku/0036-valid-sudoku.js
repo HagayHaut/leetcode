@@ -15,10 +15,10 @@ const isValidSudoku = function(board) {
     
     for (let r = 0; r < 9; r++) {
         for (let c = 0; c < 9; c++) {
-            if (board[r][c] === '.') continue;
-            
             const b = `${~~(r/3)}${~~(c / 3)}`,
                   val = board[r][c];
+            
+            if (val === '.') continue;
             
             rows[r] ||= new Set();
             cols[c] ||= new Set();
