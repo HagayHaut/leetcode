@@ -3,7 +3,7 @@ public class Solution {
         HashSet<char> uniqs = new HashSet<char>();
         int res = 0;
         int left = 0;
-        for (int right = 0; right < s.Length; right ++) {
+        for (int right = 0; right < s.Length; right++) {
             while (uniqs.Contains(s[right])) {
                 uniqs.Remove(s[left]);
                 left++;
