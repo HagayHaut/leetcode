@@ -8,7 +8,7 @@ const checkSubarraySum = function(nums, k) {
     const map = new Map([[0, -1]]);
     for(let i = 0; i < nums.length; i++) {
         sum += nums[i];
-        if (k !== 0) sum %= k;
+        if (k) sum %= k;
         if (map.has(sum)) {
             if (i - map.get(sum) > 1) return true;
         } 
