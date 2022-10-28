@@ -1,15 +1,24 @@
-/**
- * @param {string[]} strs
- * @return {string[][]}
- */
-
-const groupAnagrams = function(strs) {
-    const groups = new Map();
-    for (const word of strs) {
-        const key = word.split('').sort().join('');
-        groups.set(key, groups.get(key) ?? []);
-        groups.get(key).push(word);
+public class Solution {
+    public IList<IList<string>> GroupAnagrams(string[] strs) {
+        
+        string order(string s) {
+            return String.Concat(s.OrderBy(c => c));
+        }
+        List<IList<string>> res = new List<IList<string>>();
+        IDictionary<string, IList<string>> map = new Dictionary<string, IList<string>>();
+        
+        foreach (string s in strs) {
+            string key = order(s);
+            if (!map.ContainsKey(key)) {
+                map.Add(key, new List<string>());
+            }
+            map[key].Add(s);
+        }
+        
+        foreach (var item in map.Values) {
+            res.Add(item);
+        }
+        
+        return res;
     }
-    
-    return Array.from(groups.values());
-};
+}
