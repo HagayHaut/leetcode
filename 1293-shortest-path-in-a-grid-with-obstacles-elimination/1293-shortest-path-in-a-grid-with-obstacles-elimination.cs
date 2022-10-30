@@ -20,10 +20,11 @@ public class Solution {
             {
                 if (0 <= ii && ii < m &&0 <= jj && jj < n && K >= grid[ii][jj])
                 {
-                    if (!seen.Contains((ii, jj, K-grid[ii][jj])))
+                    var curr = (ii, jj, K - grid[ii][jj]);
+                    if (!seen.Contains(curr))
                     {
-                        seen.Add((ii, jj, K-grid[ii][jj]));
-                        q.Enqueue((ii, jj, K-grid[ii][jj], s + 1));
+                        seen.Add(curr);
+                        q.Enqueue((ii, jj, K - grid[ii][jj], s + 1));
                     }
                 }
             }
