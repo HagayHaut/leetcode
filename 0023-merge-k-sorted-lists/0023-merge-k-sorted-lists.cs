@@ -38,14 +38,19 @@ public class Solution {
             return dummy.next;
         }
         
-        ListNode merged = merge(lists[0], lists[1]);
+        Queue<ListNode> q = new Queue<ListNode>();
         
-        for (int i = 2; i < lists.Length; i++)
+        foreach (var list in lists)
         {
-            merged = merge(merged, lists[i]);
+            q.Enqueue(list);
         }
         
-        return merged;
+        while (q.Count > 1)
+        {
+            q.Enqueue(merge(q.Dequeue(), q.Dequeue()));
+        }
+        
+        return q.Dequeue();
     }
 }
 
