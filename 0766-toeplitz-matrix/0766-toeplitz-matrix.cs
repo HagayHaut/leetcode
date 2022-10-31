@@ -12,7 +12,10 @@ public class Solution {
             
             while (isInbounds(rr + 1, cc + 1))
             {
-                if (matrix[++rr][++cc] != val) return false;
+                if (matrix[++rr][++cc] != val)
+                {
+                    return false;
+                }
             }
         }
         
@@ -22,7 +25,10 @@ public class Solution {
             
             while (isInbounds(rr + 1, cc + 1))
             {
-                if (matrix[++rr][++cc] != val) return false;
+                if (matrix[++rr][++cc] != val) 
+                {
+                    return false;
+                }
             }
         }
         
