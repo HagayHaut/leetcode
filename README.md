@@ -1,6 +1,6 @@
 # MY LEETCODE SOLUTIONS
 
-Mostly solved in JavaScript and TypeScript, with some Ruby and Python sprinkled in.
+Mostly solved in JavaScript, with some Ruby, C#, TypeScript, and Python sprinkled in.
 
 [Visit my LeetCode](https://leetcode.com/HagayHaut/) for details.
 
