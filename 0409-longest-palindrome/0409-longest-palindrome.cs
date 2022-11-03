@@ -21,7 +21,8 @@ public class Solution {
             {
                 res += entry.Value;
             }
-            else {
+            else 
+            {
                 flag = true;
                 res += (entry.Value - 1);
             }
