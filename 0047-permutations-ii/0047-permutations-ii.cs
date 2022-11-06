@@ -5,8 +5,8 @@ public class Solution
         IList<IList<int>> res = new List<IList<int>>();
         int n = nums.Length;
         if (nums.Length == 0) return res;
-        bool[] seen = new bool[n];
-        for (int i = 0; i < n; i++) { seen[i] = false; }
+        bool[] allotted = new bool[n];
+        for (int i = 0; i < n; i++) { allotted[i] = false; }
         IList<int> list = new List<int>();
         Array.Sort(nums);
         
@@ -20,18 +20,18 @@ public class Solution
             for (int i = 0; i < n; i++)
             {
                 if (
-                    seen[i] ||
+                    allotted[i] ||
                     (i > 0 && 
                     nums[i - 1] == nums[i] && 
-                    !seen[i - 1])
+                    !allotted[i - 1])
                 )
                 {
                     continue;
                 }
-                seen[i] = true;
+                allotted[i] = true;
                 list.Add(nums[i]);
                 backtrack();
-                seen[i] = false;
+                allotted[i] = false;
                 list.RemoveAt(list.Count - 1);
             }
         }
