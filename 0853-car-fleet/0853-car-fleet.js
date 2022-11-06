@@ -5,7 +5,7 @@
  * @return {number}
  */
 const carFleet = function(target, position, speed) {
-    // map position to speed
+    // map position to speed so can sort position
     const map = {};
     let res = 0;
     position.forEach((p, i) => map[p] = speed[i]);
