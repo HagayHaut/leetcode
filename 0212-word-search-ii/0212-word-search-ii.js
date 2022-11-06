@@ -20,7 +20,6 @@ class Trie {
         words.forEach((word) => this.insert(word));
     }
 
-    /* Time O(N) | Space O(N) */
     insert(word, node = this.root) {
         for (const char of word) {
             const child = node.children[char] || new TrieNode();
@@ -33,7 +32,6 @@ class Trie {
         node.word = word;
     }
 
-    /* Time O((ROWS * COLS) * (4 * (3 ^ (WORDS - 1)))) | Space O(N) */
     searchBoard(board, node = this.root, words = []) {
         const [rows, cols] = [board.length, board[0].length];
 
