@@ -5,13 +5,13 @@ class StockSpanner {
     }
     
     next(price) {
-        let res = 1;
+        let res = 1, { stack } = this;
         
-        while (this.stack.length && this.stack.at(-1)[0] <= price) {
-            res += this.stack.pop()[1];
+        while (stack.length && stack.at(-1)[0] <= price) {
+            res += stack.pop()[1];
         }
         
-        this.stack.push([price, res]);
+        stack.push([price, res]);
         
         return res;
     }
