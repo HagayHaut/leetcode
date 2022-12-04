@@ -12,15 +12,19 @@ class Solution {
         const randNums: number[] = [...this.nums];
         
         for (let i = 0; i < this.nums.length; i++) {
-            const randIdx = i + Math.floor(Math.random() * (this.nums.length - i));
+            const randIdx = this.getRandomIndex(i);
             this.swap(randIdx, i, randNums);
         }
         
         return randNums;
     }
 
-    swap(i, j, arr): void {
+    private swap(i, j, arr): void {
         [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    
+    private getRandomIndex(i): number {
+        return i + Math.floor(Math.random() * (this.nums.length - i));
     }
 }
 
