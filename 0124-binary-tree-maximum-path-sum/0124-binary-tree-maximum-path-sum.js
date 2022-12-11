@@ -28,7 +28,7 @@ const maxPathSum = function(root) {
 
         // compare left OR right side sums
         const withChild = Math.max(node.val + left, node.val + right);
-        // check if even need a child
+        // check if actually need a child
         const withoutChild = Math.max(withChild, node.val);
         // compare left AND right sums against other vals
         const max = Math.max(withoutChild, node.val + left + right);
