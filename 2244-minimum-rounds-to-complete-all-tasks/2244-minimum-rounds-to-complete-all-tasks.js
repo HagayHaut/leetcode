@@ -3,7 +3,6 @@
  * @return {number}
  */
 const minimumTask = (task) => {
-    if (!task) return 0;
     if ([2,3].includes(task)) return 1;
     if (task === 4) return 2;
     return 1 + minimumTask(task - 3);
