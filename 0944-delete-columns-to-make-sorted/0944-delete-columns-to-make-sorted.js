@@ -4,15 +4,14 @@
  */
 const minDeletionSize = (strs) => {
     let badColCount = 0;
-    loop1:
+    outerLoop:
     for (let i = 0; i < strs[0].length; i++) {
         let lastChar = 'a';
-        loop2:
         for (const row of strs) {
             const char = row[i];
             if (char < lastChar) {
                 badColCount++;
-                continue loop1;
+                continue outerLoop;
             }
             lastChar = char;
         }
