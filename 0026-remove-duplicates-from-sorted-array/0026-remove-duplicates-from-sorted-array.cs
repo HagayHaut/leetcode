@@ -1,12 +1,5 @@
 public class Solution {
     public int RemoveDuplicates(int[] nums) {
-        
-        void swap(int l, int r) {
-            int temp = nums[l];
-            nums[l] = nums[r];
-            nums[r] = temp;
-        }
-        
         int l = 0;
         
         for (int r = 1; r < nums.Length; r++)
@@ -14,10 +7,17 @@ public class Solution {
             if (nums[l] != nums[r]) 
             {
                 l++;
-                swap(l, r);
+                Swap(l, r, nums);
             }
         }
         
         return l + 1;
+    }
+    
+    void Swap(int l, int r, int[] nums)
+    {
+        int temp = nums[l];
+        nums[l] = nums[r];
+        nums[r] = temp;
     }
 }
