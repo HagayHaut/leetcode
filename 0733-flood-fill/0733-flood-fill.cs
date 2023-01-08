@@ -7,6 +7,13 @@ public class Solution
         int m = image.Length;
         int n = image[0].Length;
         int oldColor = image[sr][sc];
+        List<List<int>> directions = new()
+        {
+            new() {1, 0},
+            new() {-1, 0},
+            new() {0, 1},
+            new() {0, -1},
+        };
         Func<int,int,bool> isValid = (r, c) => r >= 0 && c >= 0 && r < m && c < n;
         
         void flood(int r, int c)
@@ -15,10 +22,7 @@ public class Solution
             {
                 image[r][c] = newColor;
                 
-                flood(r, c + 1);
-                flood(r, c - 1);
-                flood(r + 1, c);
-                flood(r - 1, c);
+                directions.ForEach(d => flood(r + d[0], c + d[1]));
             }
         }
         
