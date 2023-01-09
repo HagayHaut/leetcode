@@ -13,7 +13,7 @@
  */
 public class Solution {
     public IList<int> PreorderTraversal(TreeNode root) {
-        IList<int> res = new List<int>();
+        List<int> res = new();
         
         void dfs(TreeNode node) {
             if (node == null) return;
