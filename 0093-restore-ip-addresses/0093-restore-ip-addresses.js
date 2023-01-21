@@ -22,7 +22,6 @@ const restoreIpAddresses = function(s) {
         
         if (dots.length === 3) {
             if (isValid(start, remLen)) {
-                console.log('shittt')
                 let ip = '';
                 let last = 0;
                 dots.forEach(dot => {
