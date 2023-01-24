@@ -2,59 +2,6 @@
  * @param {number[][]} board
  * @return {number}
  */
-class Node {
-    constructor(value) {
-        this.value = value;
-        this.next = null;
-    }
-}
-
-class MyQueue {
-    constructor() {
-        this.first = null;
-        this.last = null;
-        this.size = 0;
-    }
-
-    // adds a new node to queue
-    // similar SLL push(), O(1) time
-    enqueue(value) {
-        const newNode = new Node(value);
-        if (!this.first) {
-            this.first = newNode;
-            this.last = newNode;
-        } else {
-            this.last.next = newNode;
-            this.last = newNode;
-        }
-        return ++this.size;
-    }
-
-    // removes node from queue
-    // similar to SLL shift(), O(1) time
-    dequeue() {
-        if (!this.first) return null;
-        const removeNode = this.first;
-        if (this.size === 1) {
-            this.last = null;
-        } 
-        this.first = removeNode.next;
-        this.size--;
-        return removeNode.value;
-    }
-
-    print() {
-        const arr = [];
-        let curr = this.first;
-        while (curr) {
-            arr.push(curr.value);
-            curr = curr.next;
-        }
-        console.log(arr);
-    }
-}
-
-
 const snakesAndLadders = (board) => {
     const n = board.length;
     const cells = Array(n * n + 1);
@@ -67,12 +14,11 @@ const snakesAndLadders = (board) => {
     }
     
     const dists = cells.map(_ => -1);
-    const q = new MyQueue();
-    q.enqueue(1);
+    const q = [1]
     dists[1] = 0;
     
-    while (q.size) {
-        const cur = q.dequeue();
+    while (q.length) {
+        const cur = q.shift();
         for (let next = cur + 1; next <= Math.min(cur + 6, n * n); next++) {
             const [r, c] = cells[next];
             const destination = board[r][c] === -1
@@ -81,7 +27,7 @@ const snakesAndLadders = (board) => {
             
             if (dists[destination] === -1) {
                 dists[destination] = dists[cur] + 1;
-                q.enqueue(destination);
+                q.push(destination);
             }
         }
     }
