@@ -19,7 +19,8 @@ const snakesAndLadders = (board) => {
     
     while (q.length) {
         const cur = q.shift();
-        for (let next = cur + 1; next <= Math.min(cur + 6, n * n); next++) {
+        const range = Math.min(cur + 6, n * n);
+        for (let next = cur + 1; next <= range; next++) {
             const [r, c] = cells[next];
             const destination = board[r][c] === -1
                 ? next
