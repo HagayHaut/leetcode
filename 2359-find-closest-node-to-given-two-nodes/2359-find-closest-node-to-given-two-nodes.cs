@@ -3,7 +3,8 @@ public class Solution {
     {
         seen[node] = true;
         int neighbor = edges[node];
-        if (neighbor != -1 && !seen[neighbor]) {
+        if (neighbor != -1 && !seen[neighbor]) 
+        {
             dist[neighbor] = 1 + dist[node];
             dfs(neighbor, edges, dist, seen);
         }
