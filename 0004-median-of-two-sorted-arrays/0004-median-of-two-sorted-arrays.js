@@ -12,7 +12,7 @@ const findMedianSortedArrays = (nums1, nums2) => {
 
     while (i + j <= totalLen/2) {
         if (curr !== undefined) {
-        last = curr;
+            last = curr;
         }
         let x1 = nums1[i];
         let x2 = nums2[j];
