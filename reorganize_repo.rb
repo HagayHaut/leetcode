@@ -10,17 +10,12 @@ Dir.each_child(__dir__) do |child_dir_name|
         Dir.each_child(cur_dir) do |filename|
             if filename == 'README.md'
                 first_line = File.open("#{cur_dir}/#{filename}", &:readline)
-                difficulty_index = first_line.index('h3') + 3
-                case first_line[difficulty_index]
-                    when 'E'
-                        move_to_folder(cur_dir, child_dir_name, 'easy')
-                    when 'M'
-                        move_to_folder(cur_dir, child_dir_name, 'medium')
-                    when 'H'
-                        move_to_folder(cur_dir, child_dir_name, 'hard')
-                    else
-                        puts "Unable to move folder: #{child_dir_name}"
+                difficulty = case first_line[first_line.index('h3') + 3]
+                    when 'E' 'easy'
+                    when 'M' 'medium'
+                    else 'hard'
                     end
+                move_to_folder(cur_dir, child_dir_name, difficulty)
             end
         end
     end
