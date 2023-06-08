@@ -1,5 +1,6 @@
 require 'fileutils'
 
+# moves new solutions into difficulty folders
 Dir.each_child(__dir__) do |child_dir_name|
     if child_dir_name.match /^\d+/ 
         cur_dir = "#{__dir__}/#{child_dir_name}"
@@ -10,7 +11,7 @@ Dir.each_child(__dir__) do |child_dir_name|
                     when 'E' 'easy'
                     when 'M' 'medium'
                     else 'hard'
-                    end
+                end
                 FileUtils.mv(cur_dir, "#{__dir__}/#{difficulty}/#{child_dir_name}")
             end
         end
