@@ -3,12 +3,11 @@
  * @return {number}
  */
 var minFlips = function(target) {
-    let flag = true;
-    let flips = 0;
+    let flips = curr = 0;
     for (const c of target) {
-        if (!!(+c) === flag) {
+        if (+c !== curr) {
             flips++;
-            flag = !flag;
+            curr ^= 1;
         }
     }
     return flips;
