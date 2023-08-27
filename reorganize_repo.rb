@@ -13,7 +13,8 @@ Dir.each_child(__dir__) do |child_dir_name|
                 difficulty = case first_line[first_line.index('h3') + 3]
                     when 'E' 'easy'
                     when 'M' 'medium'
-                    else 'hard'
+                    when 'H' 'hard'
+                    else ''
                 end
             elsif filename == 'NOTES.md'
                 has_notes = true
