@@ -5,7 +5,7 @@ require 'fileutils'
 Dir.each_child(__dir__) do |child_dir_name|
     if child_dir_name.match /^\d+/ 
         cur_dir = "#{__dir__}/#{child_dir_name}"
-        difficulty = '' # to be a flag in outer scope
+        difficulty = '' # serves as a flag in outer scope
         has_notes = false
         Dir.each_child(cur_dir) do |filename|
             if filename == 'README.md'
