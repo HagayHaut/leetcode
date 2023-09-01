@@ -10,17 +10,25 @@ Dir.each_child(__dir__) do |child_dir_name|
         Dir.each_child(cur_dir) do |filename|
             if filename == 'README.md'
                 first_line = File.open("#{cur_dir}/#{filename}", &:readline)
-                difficulty = case first_line[first_line.index('h3') + 3]
-                    when 'E' 'easy'
-                    when 'M' 'medium'
-                    when 'H' 'hard'
+                difficulty_first_letter = first_line[first_line.index('h3') + 3]
+                difficulty = case difficulty_first_letter
+                    when 'E' then 'easy'
+                    when 'M' then 'medium'
+                    when 'H' then 'hard'
                     else ''
                 end
-            elsif filename == 'NOTES.md'
-                has_notes = true
-            end
+            end 
+            has_notes = true if filename == 'NOTES.md'
         end
-        FileUtils.rm_f(["#{cur_dir}/NOTES.md"]) if has_notes
-        FileUtils.mv(cur_dir, "#{__dir__}/#{difficulty}/#{child_dir_name}") if difficulty != ''
+        if difficulty != ""
+            puts "Moving #{child_dir_name} to #{difficulty} folder..."
+            FileUtils.mv(cur_dir, "#{__dir__}/#{difficulty}/#{child_dir_name}") if difficulty != ''
+        else
+            puts "Cannot determine problem difficulty for #{child_dir_name}"
+        end
+        if has_notes
+            puts "Deleting empty NOTES.md file for #{child_dir_name}"
+            FileUtils.rm_f(["#{cur_dir}/NOTES.md"]) 
+        end
     end
 end
