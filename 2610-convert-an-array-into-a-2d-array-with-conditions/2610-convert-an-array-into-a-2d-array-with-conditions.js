@@ -3,11 +3,9 @@
  * @return {number[][]}
  */
 var findMatrix = function(nums) {
-    let maxRows = 0;
     const map = nums.reduce((acc, cur) => {
         acc.set(cur, acc.get(cur) ?? 0);
         acc.set(cur, acc.get(cur) + 1);
-        maxRows = Math.max(maxRows, acc.get(cur))
         return acc;
     }, new Map());
     
