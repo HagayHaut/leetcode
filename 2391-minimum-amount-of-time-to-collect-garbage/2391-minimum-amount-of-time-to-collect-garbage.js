@@ -19,8 +19,8 @@ var garbageCollection = function(garbage, travel) {
     for (let i = 0; i < travel.length; i++) {
         if (i) travel[i] += travel[i - 1];
     }
-    for (const i of [p, m, g]) {
-        if (i) mins += travel[i - 1]; 
-    }
+    if (p) mins += travel[p - 1]; 
+    if (g) mins += travel[g - 1];
+    if (m) mins += travel[m - 1];
     return mins;
 };
