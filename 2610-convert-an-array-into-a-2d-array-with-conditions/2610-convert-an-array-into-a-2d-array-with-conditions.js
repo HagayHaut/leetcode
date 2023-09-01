@@ -13,9 +13,8 @@ var findMatrix = function(nums) {
     
     for (const [num, count] of map) {
         while (mat.length < count) mat.push([]);
-        let i = 0;
-        while (i < count) {
-            mat[i++].push(num);
+        for (let i = 0; i < count; i++) {
+            mat[i].push(num);
         }
     }
     return mat;
