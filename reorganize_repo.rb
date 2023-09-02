@@ -22,13 +22,13 @@ Dir.each_child(__dir__) do |child_dir_name|
         end
         if difficulty != ""
             puts "Moving #{child_dir_name} to #{difficulty} folder..."
-            FileUtils.mv(cur_dir, "#{__dir__}/#{difficulty}/#{child_dir_name}") if difficulty != ''
+            FileUtils.mv cur_dir, "#{__dir__}/#{difficulty}/#{child_dir_name}"
         else
             puts "Cannot determine problem difficulty for #{child_dir_name}"
         end
         if has_notes
             puts "Deleting empty NOTES.md file for #{child_dir_name}"
-            FileUtils.rm_f(["#{cur_dir}/NOTES.md"]) 
+            FileUtils.rm_f ["#{cur_dir}/NOTES.md"]
         end
     end
 end
